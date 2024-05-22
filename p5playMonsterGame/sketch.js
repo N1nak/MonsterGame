@@ -9,6 +9,7 @@ let hp = 50;
 let moving = 0.5;
 let vel = -.9;
 
+// just testing
 // questions (Sorce : https://quizlet.com/267925498/computer-science-truefalse-flash-cards/)
 let questions = [
   { text: "A compiler transfers your text format into a binary ", answer: true },
