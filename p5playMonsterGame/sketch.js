@@ -9,6 +9,8 @@ let hp = 50;
 let moving = 0.5;
 let vel = -.9;
 
+// 2:1 is == to 1000x500
+
 // just testing
 // questions (Sorce : https://quizlet.com/267925498/computer-science-truefalse-flash-cards/)
 let questions = [
@@ -26,31 +28,31 @@ function preload() {
 }
 
 function setup() {
-  new Canvas(' 2:1');
+  new Canvas('window');
   //TODO add make sprites change size based off of window size
   world.gravity.y = 10;
   
   // True Option
   tButton = createButton("True");
-  tButton.position(300, 170);
+  tButton.position(562.5, 170);
 
   // False Option
   fButton = createButton("False");
-  fButton.position(450, 170);
+  fButton.position(875, 170);
 
   // Questions
   question = new Sprite();
 
-  question.textSize = 14;
+  question.textSize = 27;
   question.text = questions[qNum].text;
-  question.x = 400;
-  question.y = 40;
+  question.x = 750;
+  question.y = 100;
   question.image = 'assets.png';
   question.collider = 'static';
 
   // Flooring
   floor = new Sprite();
-  floor.y = 300;
+  floor.y = 600;
   floor.w = 3000;
   floor.h = 200;
   floor.color = "lightgreen";
@@ -63,6 +65,7 @@ function setup() {
    player.width = 50;
    player.height = 50;
    player.x = 50;
+   player.y = 470;
    player.image = 'assets/Player1.png';
 
  
@@ -70,13 +73,14 @@ function setup() {
    wizard = new Sprite();
    wizard.width = 50;
    wizard.height = 50;
-   wizard.x = 700;
+   wizard.x = 1400;
+   wizard.y = 470
    wizard.image = wizimg;
  
   // turns red or green when wrong or right
   check = new Sprite();
-  check.x = 400;
-  check.y = 300;
+  check.x = 750;
+  check.y = 210;
   check.collider = 'static';
   check.text = "N/a";
 
@@ -91,7 +95,9 @@ function draw() {
 
   wizard.velocity.x = vel;
   wizard.speed = moving
-  // to do: remove all hard sets ()
+
+  player.velocity.x = 0;
+  player.speed = 0;
 
   if (qNum > questions.length) {
     moving = 0;
@@ -104,7 +110,8 @@ function draw() {
     vel = 0;
     question.text = "You Lost!";
     qNum = 0;
-    wizard.x = 700;
+    wizard.x = 1400;
+    hp = 50;
   }
 
   // Winning
@@ -113,7 +120,8 @@ function draw() {
     vel = 0;
     question.text = "You Won!";
     qNum = 0;
-    wizard.x = 700;
+    wizard.x = 1400;
+    hp = 50;
   }
 }
 
@@ -124,7 +132,7 @@ function correct() {
   wizard.image = 'assets/monsterDamage.png';
   check.color = 'green';
   check.text = "Correct!";
-  hp -= 10;
+  hp = hp - 10;
   nextQuestion();
 }
 
