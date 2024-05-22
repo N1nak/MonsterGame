@@ -1,4 +1,4 @@
-let player, floor, wizard;
+let player, floor, wizard, title;
 let wizimg;
 let question;
 
@@ -50,6 +50,8 @@ function setup() {
   question.image = 'assets.png';
   question.collider = 'static';
 
+
+
   // Flooring
   floor = new Sprite();
   floor.y = 600;
@@ -59,6 +61,13 @@ function setup() {
   strokeWeight(4);
   floor.stroke = "darkgreen";
   floor.collider = 'static';
+
+  // Title
+  title = new Sprite();
+  title.x = 750;
+  title.y = 600;
+  title.image = 'assets/betterTitle.png';
+  title.collider = 'static';
 
    // Player
    player = new Sprite();
