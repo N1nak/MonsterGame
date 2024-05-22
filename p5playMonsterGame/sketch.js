@@ -2,7 +2,7 @@ let player, floor, wizard, title;
 let wizimg;
 let question;
 
-let tButton, fButton;
+let tButton, fButton, restarButton;
 let qNum = 1;
 
 let hp = 50;
@@ -39,6 +39,11 @@ function setup() {
   // False Option
   fButton = createButton("False");
   fButton.position(875, 170);
+
+  //restart Button
+  restarButton = createButton("Play Again!");
+  restarButton.position(710, 250);
+  restarButton.hide();
 
   // Questions
   question = new Sprite();
@@ -97,6 +102,10 @@ function setup() {
   // buttons
   tButton.mousePressed(trueButton);
   fButton.mousePressed(falseButton);
+
+  // restart
+  restarButton.mousePressed(restart);
+
 }
 
 function draw() {
@@ -109,7 +118,7 @@ function draw() {
   player.speed = 0;
 
 
-  // Losing
+  // You Lost
   if (player.collides(wizard)) {
     moving = 0;
     vel = 0;
@@ -117,9 +126,12 @@ function draw() {
     qNum = 0;
     wizard.x = 1400;
     hp = 50;
+    restarButton.show();
+    tButton.hide();
+    fButton.hide();
   }
 
-  // Winning
+  // You Won
   if (hp == 0) {
     moving = 0;
     vel = 0;
@@ -127,10 +139,12 @@ function draw() {
     qNum = 0;
     wizard.x = 1400;
     hp = 50;
+    restarButton.show();
+    tButton.hide();
+    fButton.hide();
   }
 }
 
-// figure out why monster doesnt move when correct
 
 // Correct
 function correct() {
@@ -179,4 +193,17 @@ function falseButton() {
       wrong();
     }
   }
+}
+
+
+function restart() {
+  vel = -.9;
+  moving = .5;
+
+  player.velocity.x = 0;
+  player.speed = 0;
+  restarButton.hide();
+  tButton.show();
+  fButton.show();
+  nextQuestion();
 }
