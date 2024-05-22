@@ -108,10 +108,6 @@ function draw() {
   player.velocity.x = 0;
   player.speed = 0;
 
-  if (qNum > questions.length) {
-    moving = 0;
-    vel = 0;
-  }
 
   // Losing
   if (player.collides(wizard)) {
@@ -134,7 +130,7 @@ function draw() {
   }
 }
 
-
+// figure out why monster doesnt move when correct
 
 // Correct
 function correct() {
