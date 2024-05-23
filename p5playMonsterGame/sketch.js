@@ -9,10 +9,11 @@ let hp = 50;
 let moving = 0.5;
 let vel = -.9;
 
+
 // 2:1 is == to 1000x500
 
 // just testing
-// questions (Sorce : https://quizlet.com/267925498/computer-science-truefalse-flash-cards/)
+// questions (Source : https://quizlet.com/267925498/computer-science-truefalse-flash-cards/)
 let questions = [
   { text: "A compiler transfers your text format into a binary ", answer: true },
   { text: "Input Is Data that has been processed by the CPU into a useful format that humans can understand ", answer: false },
